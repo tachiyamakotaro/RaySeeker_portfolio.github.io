@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 470" font-family="'Hiragino Kaku Gothic ProN','Meiryo','Noto Sans CJK JP',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e0a020"/>
+    </marker>
+  </defs>
+  <rect width="960" height="470" fill="#141a2e"/>
+  <text x="480" y="32" font-size="17" font-weight="bold" fill="#ffe7a3" text-anchor="middle">RenderingEngine::Execute（1フレームの描画の順番）</text>
+
+  <g font-size="13" fill="#e8e6df">
+    <!-- row 1 -->
+    <rect x="20" y="60" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="122" y="88" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">① シャドウマップ</text>
+    <text x="32" y="114">ライト視点で</text>
+    <text x="32" y="134">（深度, 深度²）を描く</text>
+    <text x="32" y="160" fill="#9fd3ff">→ ガウシアンブラー</text>
+    <text x="32" y="180" fill="#9fd3ff">（VSM の準備）</text>
+
+    <rect x="255" y="60" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="357" y="88" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">② メイン描画</text>
+    <text x="267" y="114">全モデルをライティング</text>
+    <text x="267" y="134">HDR（R16G16B16A16）</text>
+    <text x="267" y="160" fill="#9fd3ff">rgb ＝ 色</text>
+    <text x="267" y="180" fill="#9fd3ff">α ＝ カメラからの距離</text>
+
+    <rect x="490" y="60" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="592" y="88" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">③ アウトライン</text>
+    <text x="502" y="114">まわり8方向の</text>
+    <text x="502" y="134">α（距離）の差で縁を探し</text>
+    <text x="502" y="160" fill="#9fd3ff">線を引いて書き戻す</text>
+
+    <rect x="725" y="60" width="215" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="832" y="88" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">④ エフェクト</text>
+    <text x="737" y="114">氷が溶けたときの湯気など</text>
+    <text x="737" y="134">（線が付かないように</text>
+    <text x="737" y="154">　アウトラインの後）</text>
+
+    <!-- row 2 -->
+    <rect x="20" y="270" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="122" y="298" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">⑤ ブルーム</text>
+    <text x="32" y="324">明るい所を抜き出す</text>
+    <text x="32" y="344">→ DualBlur でぼかす</text>
+    <text x="32" y="370" fill="#9fd3ff">→ 元の絵に足す</text>
+
+    <rect x="255" y="270" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="357" y="298" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">⑥ 被写界深度</text>
+    <text x="267" y="324">DualBlur でぼかした絵と</text>
+    <text x="267" y="344">くっきりした絵を</text>
+    <text x="267" y="370" fill="#9fd3ff">α（距離）で混ぜる</text>
+
+    <rect x="490" y="270" width="205" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="592" y="298" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">⑦ 画面へコピー</text>
+    <text x="502" y="324">HDR の絵を</text>
+    <text x="502" y="344">フレームバッファへ</text>
+
+    <rect x="725" y="270" width="215" height="130" rx="12" fill="#22294a" stroke="#e3b341" stroke-width="2"/>
+    <text x="832" y="298" font-size="15" font-weight="bold" fill="#ffd36b" text-anchor="middle">⑧ 2D・ImGui</text>
+    <text x="737" y="324">UI・文字</text>
+    <text x="737" y="344">デバッグウィンドウ</text>
+    <text x="737" y="364">ステージエディター</text>
+  </g>
+
+  <g stroke="#e0a020" stroke-width="3" fill="none">
+    <line x1="226" y1="125" x2="252" y2="125" marker-end="url(#arrow)"/>
+    <line x1="461" y1="125" x2="487" y2="125" marker-end="url(#arrow)"/>
+    <line x1="696" y1="125" x2="722" y2="125" marker-end="url(#arrow)"/>
+    <path d="M832,191 L832,230 L122,230 L122,267" marker-end="url(#arrow)"/>
+    <line x1="226" y1="335" x2="252" y2="335" marker-end="url(#arrow)"/>
+    <line x1="461" y1="335" x2="487" y2="335" marker-end="url(#arrow)"/>
+    <line x1="696" y1="335" x2="722" y2="335" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- DualBlur bracket -->
+  <path d="M30,412 L30,424 L450,424 L450,412" stroke="#9fd3ff" stroke-width="2" fill="none"/>
+  <text x="240" y="448" font-size="13.5" fill="#9fd3ff" text-anchor="middle">同じ DualBlur クラスを、渡す絵だけ変えて使い回す</text>
+  <text x="710" y="448" font-size="13.5" fill="#c9c4b5" text-anchor="middle">※ ②の α の距離を、③と⑥が共通で使う</text>
+</svg>

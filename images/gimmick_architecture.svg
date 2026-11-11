@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 556" font-family="'Hiragino Kaku Gothic ProN','Meiryo','Noto Sans CJK JP',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8a6a1f"/>
+    </marker>
+    <marker id="inherit" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#ffffff" stroke="#2f3a66" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <rect width="960" height="556" fill="#fbf7ee"/>
+
+  <!-- Stage -->
+  <rect x="20" y="20" width="400" height="140" rx="12" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+  <text x="36" y="46" font-size="17" font-weight="bold" fill="#1f2b52">Stage（ステージ）</text>
+  <rect x="36" y="60" width="222" height="84" rx="8" fill="#ffffff" stroke="#e0a020"/>
+  <text x="48" y="84" font-size="15" font-weight="bold" fill="#1f2b52">GimmickManager</text>
+  <text x="48" y="106" font-size="12.5" fill="#444">全ギミックを1本のリストで持つ</text>
+  <text x="46" y="126" font-size="11.5" fill="#9a5b00">vector&lt;unique_ptr&lt;GimmickBase&gt;&gt;</text>
+  <rect x="268" y="60" width="140" height="84" rx="8" fill="#ffffff" stroke="#e0a020"/>
+  <text x="278" y="84" font-size="15" font-weight="bold" fill="#1f2b52">LightTracer</text>
+  <text x="278" y="106" font-size="12.5" fill="#444">光の経路を計算</text>
+  <text x="278" y="126" font-size="12.5" fill="#444">（種類を知らない）</text>
+
+  <!-- Registry -->
+  <rect x="520" y="20" width="420" height="140" rx="12" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+  <text x="536" y="46" font-size="17" font-weight="bold" fill="#1f2b52">GimmickRegistry（登録表）</text>
+  <text x="536" y="72" font-size="13" fill="#9a5b00">{ "Door", [](p){ return make_unique&lt;Door&gt;(…); } },</text>
+  <text x="536" y="92" font-size="13" fill="#444">新しいギミックは、ここに1行足すだけ</text>
+  <rect x="536" y="104" width="186" height="42" rx="8" fill="#ffffff" stroke="#e0a020"/>
+  <text x="548" y="130" font-size="13" fill="#1f2b52">StageEditor の追加ボタン</text>
+  <rect x="736" y="104" width="190" height="42" rx="8" fill="#ffffff" stroke="#e0a020"/>
+  <text x="748" y="130" font-size="13" fill="#1f2b52">StageLoader（"type"で作る）</text>
+
+  <!-- arrow manager -> base -->
+  <line x1="136" y1="146" x2="300" y2="196" stroke="#8a6a1f" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- registry -> base -->
+  <line x1="700" y1="160" x2="640" y2="196" stroke="#8a6a1f" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="684" y="186" font-size="12" fill="#8a6a1f">作る</text>
+
+  <!-- GimmickBase -->
+  <rect x="290" y="198" width="380" height="150" rx="12" fill="#2f3a66" stroke="#e3b341" stroke-width="2"/>
+  <text x="480" y="226" font-size="18" font-weight="bold" fill="#ffe7a3" text-anchor="middle">GimmickBase（抽象クラス）</text>
+  <text x="306" y="254" font-size="13.5" fill="#fff3cf">ゲーム中： GetUpdatePhase / Update / GetCollision</text>
+  <text x="306" y="276" font-size="13.5" fill="#fff3cf">光：　　　 IntersectLight / CollectEmittedRays</text>
+  <text x="306" y="298" font-size="13.5" fill="#fff3cf">信号：　　 IsSignalSource / IsSignalOn</text>
+  <text x="306" y="320" font-size="13.5" fill="#fff3cf">エディター： DrawEditor / DrawInspector</text>
+  <text x="306" y="340" font-size="13.5" fill="#fff3cf">ファイル： Serialize ／ 複製・Undo： Clone</text>
+
+  <!-- point / line gimmicks -->
+  <rect x="20" y="400" width="230" height="130" rx="12" fill="#ffffff" stroke="#c9b37a" stroke-width="1.5"/>
+  <text x="34" y="426" font-size="14" font-weight="bold" fill="#a86400">点・線で置く</text>
+  <text x="34" y="456" font-size="14" fill="#26283a">EmitRay（光源・色の光）</text>
+  <text x="34" y="482" font-size="14" fill="#26283a">LightMirror（反射鏡）</text>
+  <text x="34" y="506" font-size="12" fill="#666">　回す・レール・固定</text>
+  <line x1="135" y1="400" x2="330" y2="350" stroke="#2f3a66" stroke-width="1.5" marker-end="url(#inherit)"/>
+
+  <!-- RectGimmick -->
+  <rect x="380" y="392" width="200" height="50" rx="10" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+  <text x="480" y="414" font-size="15" font-weight="bold" fill="#1f2b52" text-anchor="middle">RectGimmick</text>
+  <text x="480" y="433" font-size="12" fill="#444" text-anchor="middle">矩形で置く物の共通部分</text>
+  <line x1="480" y1="392" x2="480" y2="350" stroke="#2f3a66" stroke-width="1.5" marker-end="url(#inherit)"/>
+
+  <!-- children chips -->
+  <g font-size="13" fill="#26283a">
+    <rect x="270" y="470" width="150" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="282" y="490">StageBlock 地形</text>
+    <rect x="430" y="470" width="180" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="442" y="490">LightReceiver 光スイッチ</text>
+    <rect x="620" y="470" width="100" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="632" y="490">Door 扉</text>
+    <rect x="730" y="470" width="110" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="742" y="490">IceBlock 氷</text>
+
+    <rect x="270" y="508" width="210" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="282" y="528">DarkZone・FrontWall 暗闇</text>
+    <rect x="490" y="508" width="210" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="502" y="528">MovingBlock ソーラーの足場</text>
+    <rect x="710" y="508" width="190" height="30" rx="6" fill="#ffffff" stroke="#c9b37a"/><text x="722" y="528">ColorReceiver 色センサー</text>
+  </g>
+  <line x1="480" y1="470" x2="480" y2="444" stroke="#2f3a66" stroke-width="1.5" marker-end="url(#inherit)"/>
+</svg>

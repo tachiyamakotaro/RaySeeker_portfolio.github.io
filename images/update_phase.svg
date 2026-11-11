@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 230" font-family="'Hiragino Kaku Gothic ProN','Meiryo','Noto Sans CJK JP',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e0a020"/>
+    </marker>
+  </defs>
+  <rect width="960" height="230" fill="#fbf7ee"/>
+  <text x="480" y="28" font-size="16" font-weight="bold" fill="#1f2b52" text-anchor="middle">1フレームの更新の順番（ギミックが自分の UpdatePhase を返す）</text>
+
+  <g font-size="13" fill="#26283a">
+    <!-- 1 -->
+    <rect x="15" y="50" width="168" height="160" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <rect x="15" y="50" width="168" height="40" rx="12" fill="#2f3a66"/>
+    <rect x="15" y="76" width="168" height="14" fill="#2f3a66"/>
+    <text x="99" y="76" font-size="15" font-weight="bold" fill="#ffe7a3" text-anchor="middle">1. Input</text>
+    <text x="27" y="116">踏まれる・触れられる物</text>
+    <text x="27" y="142" fill="#888">光より先に決めたい物を</text>
+    <text x="27" y="164" fill="#888">入れる枠</text>
+
+    <!-- 2 -->
+    <rect x="203" y="50" width="168" height="160" rx="12" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+    <rect x="203" y="50" width="168" height="40" rx="12" fill="#e0a020"/>
+    <rect x="203" y="76" width="168" height="14" fill="#e0a020"/>
+    <text x="287" y="76" font-size="15" font-weight="bold" fill="#1f2b52" text-anchor="middle">2. 光の計算</text>
+    <text x="215" y="116">LightTracer が</text>
+    <text x="215" y="138">今の扉・鏡の位置で</text>
+    <text x="215" y="160">光の経路を求める</text>
+
+    <!-- 3 -->
+    <rect x="391" y="50" width="168" height="160" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <rect x="391" y="50" width="168" height="40" rx="12" fill="#2f3a66"/>
+    <rect x="391" y="76" width="168" height="14" fill="#2f3a66"/>
+    <text x="475" y="76" font-size="15" font-weight="bold" fill="#ffe7a3" text-anchor="middle">3. Light</text>
+    <text x="403" y="116">光を受ける物</text>
+    <text x="403" y="142" fill="#a86400">光スイッチ・氷</text>
+    <text x="403" y="164" fill="#a86400">ソーラーパネル</text>
+    <text x="403" y="186" fill="#a86400">色センサー</text>
+
+    <!-- 4 -->
+    <rect x="579" y="50" width="168" height="160" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <rect x="579" y="50" width="168" height="40" rx="12" fill="#2f3a66"/>
+    <rect x="579" y="76" width="168" height="14" fill="#2f3a66"/>
+    <text x="663" y="76" font-size="15" font-weight="bold" fill="#ffe7a3" text-anchor="middle">4. Signal</text>
+    <text x="591" y="116">信号を見て動く物</text>
+    <text x="591" y="142" fill="#a86400">扉（光スイッチ・</text>
+    <text x="591" y="164" fill="#a86400">　色センサーを見る）</text>
+
+    <!-- 5 -->
+    <rect x="767" y="50" width="178" height="160" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <rect x="767" y="50" width="178" height="40" rx="12" fill="#2f3a66"/>
+    <rect x="767" y="76" width="178" height="14" fill="#2f3a66"/>
+    <text x="856" y="76" font-size="15" font-weight="bold" fill="#ffe7a3" text-anchor="middle">5. Late</text>
+    <text x="779" y="116">ほかの結果を見て動く物</text>
+    <text x="779" y="142" fill="#888">ほかのギミックの結果を</text>
+    <text x="779" y="164" fill="#888">見てから動く物の枠</text>
+  </g>
+
+  <g stroke="#e0a020" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="184" y1="130" x2="201" y2="130"/>
+    <line x1="372" y1="130" x2="389" y2="130"/>
+    <line x1="560" y1="130" x2="577" y2="130"/>
+    <line x1="748" y1="130" x2="765" y2="130"/>
+  </g>
+</svg>

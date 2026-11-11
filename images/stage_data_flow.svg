@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" font-family="'Hiragino Kaku Gothic ProN','Meiryo','Noto Sans CJK JP',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e0a020"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2f3a66"/>
+    </marker>
+  </defs>
+  <rect width="960" height="360" fill="#fbf7ee"/>
+  <text x="480" y="28" font-size="16" font-weight="bold" fill="#1f2b52" text-anchor="middle">ステージの読み込みと保存（読み込み側もエディターも、ギミックの種類を知らない）</text>
+
+  <g font-size="13" fill="#26283a">
+    <rect x="15" y="55" width="160" height="110" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <text x="95" y="80" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">StageCatalog.h</text>
+    <text x="27" y="106">ステージの表</text>
+    <text x="27" y="128" fill="#a86400">ステージを増やす</text>
+    <text x="27" y="148" fill="#a86400">＝ 1行足す</text>
+
+    <rect x="205" y="55" width="180" height="110" rx="12" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+    <text x="295" y="80" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">JSON 2つ</text>
+    <text x="217" y="106">StageXX_Object.json</text>
+    <text x="232" y="124" fill="#666">（ステージ設定・地形）</text>
+    <text x="217" y="146">StageXX_Gimmick.json</text>
+
+    <rect x="415" y="55" width="160" height="110" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <text x="495" y="80" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">StageLoader</text>
+    <text x="427" y="106">1行ずつ "type" を</text>
+    <text x="427" y="128">読む</text>
+    <text x="427" y="150" fill="#a86400">別のステージに読む</text>
+
+    <rect x="605" y="55" width="160" height="110" rx="12" fill="#ffffff" stroke="#e0a020" stroke-width="2"/>
+    <text x="685" y="80" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">GimmickRegistry</text>
+    <text x="617" y="106">"Door" → Door を</text>
+    <text x="617" y="128">作る</text>
+    <text x="617" y="150" fill="#a86400">知らない type は飛ばす</text>
+
+    <rect x="795" y="55" width="150" height="110" rx="12" fill="#2f3a66" stroke="#e3b341" stroke-width="2"/>
+    <text x="870" y="80" font-size="14.5" font-weight="bold" fill="#ffe7a3" text-anchor="middle">各ギミックの</text>
+    <text x="870" y="102" font-size="14.5" font-weight="bold" fill="#ffe7a3" text-anchor="middle">Serialize</text>
+    <text x="807" y="128" fill="#fff3cf">（読み込みモード）</text>
+    <text x="807" y="150" fill="#fff3cf">JSON → メンバ変数</text>
+
+    <!-- row 2 -->
+    <rect x="725" y="225" width="220" height="110" rx="12" fill="#fff3cf" stroke="#e0a020" stroke-width="2"/>
+    <text x="835" y="252" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">Stage（GimmickManager）</text>
+    <text x="737" y="278">全部読めたときだけ</text>
+    <text x="737" y="300">今のステージと入れ替える</text>
+    <text x="737" y="322" fill="#a86400">→ 書き間違いでも壊れない</text>
+
+    <rect x="400" y="225" width="250" height="110" rx="12" fill="#ffffff" stroke="#2f3a66" stroke-width="2"/>
+    <text x="525" y="252" font-size="14.5" font-weight="bold" fill="#1f2b52" text-anchor="middle">StageEditor（ImGui）</text>
+    <text x="412" y="278">見取り図で配置・Inspector で調整</text>
+    <text x="412" y="300">（DrawEditor / DrawInspector）</text>
+    <text x="412" y="322" fill="#2f3a66">「Save JSON」</text>
+  </g>
+
+  <g stroke="#e0a020" stroke-width="3" fill="none">
+    <line x1="176" y1="110" x2="202" y2="110" marker-end="url(#arrow)"/>
+    <line x1="386" y1="110" x2="412" y2="110" marker-end="url(#arrow)"/>
+    <line x1="576" y1="110" x2="602" y2="110" marker-end="url(#arrow)"/>
+    <line x1="766" y1="110" x2="792" y2="110" marker-end="url(#arrow)"/>
+    <line x1="870" y1="166" x2="870" y2="222" marker-end="url(#arrow)"/>
+  </g>
+  <g stroke="#2f3a66" stroke-width="3" fill="none">
+    <line x1="722" y1="280" x2="653" y2="280" marker-end="url(#arrowBlue)"/>
+    <path d="M400,290 L295,290 L295,168" marker-end="url(#arrowBlue)"/>
+  </g>
+  <text x="285" y="208" font-size="13" fill="#2f3a66" text-anchor="end">Serialize（書き出しモード）</text>
+  <text x="285" y="228" font-size="13" fill="#2f3a66" text-anchor="end">メンバ変数 → JSON</text>
+</svg>
