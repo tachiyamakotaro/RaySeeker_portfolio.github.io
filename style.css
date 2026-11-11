@@ -1,0 +1,130 @@
+﻿/* 全体の背景とフォント設定（光と遺跡をイメージした、あたたかい白） */
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', 'Noto Sans CJK JP', sans-serif;
+    color: #26283a;
+    background-color: #fbf7ee;
+    line-height: 1.8;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 28px 80px;
+}
+
+/* リンク */
+a {
+    color: #1d5fb8;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* タイトル（大見出し）：夜の遺跡に差し込む光 */
+h1 {
+    text-align: center;
+    color: #ffe7a3;
+    padding: 18px 10px;
+    background: linear-gradient(to bottom, #1d2340, #33407a);
+    border: 2px solid #e3b341;
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(227, 179, 65, 0.45);
+    letter-spacing: 0.05em;
+}
+h1::before, h1::after {
+    content: ' ✦ ';
+    color: #ffd36b;
+}
+
+/* セクション見出し（中見出し） */
+h2 {
+    background: linear-gradient(135deg, #fff3cf, #ffe2a0);
+    color: #1f2b52;
+    padding: 10px 15px;
+    border-left: 8px solid #e0a020;
+    border-radius: 0 12px 12px 0;
+    margin-top: 40px;
+}
+
+/* 小見出し */
+h3 {
+    color: #a86400;
+    border-bottom: 2px dashed #f0c85a;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+
+/* さらに小さい見出し（ギミック紹介など） */
+h4 {
+    color: #1f2b52;
+    border-left: 4px solid #f0c85a;
+    padding-left: 10px;
+    margin-top: 28px;
+}
+
+/* テーブル（表） */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #f0dca8;
+}
+th, td {
+    border: 1px solid #f5e8c4;
+    padding: 10px;
+    vertical-align: top;
+}
+th {
+    background-color: #2f3a66;
+    color: #fff3cf;
+}
+tr:nth-child(even) {
+    background-color: #fffbf1;
+}
+
+/* インラインコード（バッククォート1つ） */
+code {
+    color: #9a5b00;
+    background-color: #fff1cc;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, 'Courier New', monospace;
+}
+
+/* コードブロック（バッククォート3つ） */
+pre {
+    background-color: #141a2e;
+    color: #e8e6df;
+    padding: 15px;
+    border-radius: 10px;
+    border: 3px solid #e3b341;
+    overflow-x: auto;
+    tab-size: 4;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+pre code,
+pre code.hljs {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    border: none;
+}
+
+/* 区切り線 */
+hr {
+    border: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #e3b341, transparent);
+}
+
+/* 画像の装飾 */
+img {
+    max-width: 100%;
+    border-radius: 12px;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(160, 110, 0, 0.18);
+    display: block;
+    margin: 15px auto;
+}
