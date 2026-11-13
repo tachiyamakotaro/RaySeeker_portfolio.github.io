@@ -128,3 +128,42 @@ img {
     display: block;
     margin: 15px auto;
 }
+
+/* 印刷（PDF）のときだけ使う設定。ブラウザで見たときの見た目は変わらない */
+@media print {
+    body { max-width: none; padding: 0; }
+
+    /* 節と節の間の空白（md の <br><br><br><br> の段落）は、紙では消して上に詰める */
+    p:has(> br:nth-child(4):last-child):not(:has(> :not(br))) { display: none; }
+    h2 { margin-top: 24px; }
+    h3, h4 { margin-top: 18px; }
+
+    /* 見出しだけがページの最後に残らないようにする
+       （見出しの下に見えない高さを付けて、下に十分な空きがないときは見出しごと次のページへ送る） */
+    h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; break-inside: avoid; page-break-inside: avoid; }
+    h2::after, h3::after, h4::after { content: ""; display: block; height: 120px; margin-bottom: -120px; }
+
+    /* 画像・表の1行・コード・段落・箇条書きの1項目は、途中で2ページに分けない（表は行の切れ目でなら次のページに続いてよい） */
+    img, tr, pre, p, li { break-inside: avoid; page-break-inside: avoid; }
+    pre, pre * { overflow: visible !important; }
+
+    /* 箇条書きの直前の文は、箇条書きと同じページに置く */
+    p:has(+ ul), p:has(+ ol) { break-after: avoid; page-break-after: avoid; }
+
+    /* 画像は紙では高さ 300px までに縮める（縦長の画像が次のページへ送られて、大きな空白ができないように）。
+       幅は md で付けた割合（width="45%" など）を上限にして、縦横の比は変えない */
+    img { box-shadow: none; width: auto !important; height: auto !important; max-height: 300px; }
+    img[width="20%"] { max-width: 20%; }
+    img[width="45%"] { max-width: 45%; }
+    img[width="60%"] { max-width: 60%; }
+    img[width="70%"] { max-width: 70%; }
+    img[width="80%"] { max-width: 80%; }
+    img[width="85%"] { max-width: 85%; }
+
+    /* 見出しのすぐ後が画像・コードのときは、その分の空きがなければ見出しごと次のページへ送る */
+    h2:has(+ img)::after, h3:has(+ img)::after, h4:has(+ img)::after,
+    h2:has(+ pre)::after, h3:has(+ pre)::after, h4:has(+ pre)::after { height: 320px; margin-bottom: -320px; }
+
+    /* 大きな節を毎回新しいページから始めたいときは、下の行の前後にあるコメントの記号を消す */
+    /* h2 { break-before: page; } */
+}
